@@ -1,0 +1,86 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+
+// Toastr
+@import '~toastr/toastr';
+
+#react-app{
+    display: flex;
+    position: relative;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: white;
+}
+
+$sidebar-bg-color: white!default;
+$sidebar-color: black !default;
+$sidebar-width: 270px !default;
+$sidebar-collapsed-width: 80px !default;
+$highlight-color: dodgerblue !default;
+$submenu-bg-color: white !default;
+$submenu-bg-color-collapsed: #2b2b2b !default;
+$icon-bg-color: #2b2b2b !default;
+$icon-size: 35px !default;
+$breakpoint-xs: 480px !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+
+.pro-sidebar{
+    height: 100vh !important;
+    box-shadow: 0px 0px 10px gray;
+}
+
+main{
+    display: inline-block;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn-toggle{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    background-color: #353535;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    display: none;
+}
+
+@media (max-width: 768px){
+    .btn-toggle{
+        display: flex;
+    }
+    .close-menu{
+        display: list-item !important;
+    }
+}
+
+.close-menu{
+    position: absolute;
+    display: none;
+    list-style: none;
+    left: 232px;
+}
+
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
+
+
