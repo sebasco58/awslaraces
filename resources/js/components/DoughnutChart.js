@@ -4,10 +4,10 @@ import { Doughnut } from 'react-chartjs-2';
 function DoughnutChart(props) {
     const data = {
         responsive: true,
-        labels: ['Comite por falta academica', 'Comite por falta disciplinaria', 'Parte 3'],
+        labels: ['Mes 1', 'Mes 2', 'Parte 3'],
         datasets: [
             {
-                data: [10, 12, 2],
+                data: [0, 0, 0],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

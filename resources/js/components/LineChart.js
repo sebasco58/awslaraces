@@ -8,7 +8,7 @@ function LineChart(props) {
         datasets: [
             {
                 label: props.label,
-                data: [10, 6, 2, 4, 10],
+                data: [0, 0, 0, 0, 0],
                 backgroundColor: [
                     props.color
                 ],

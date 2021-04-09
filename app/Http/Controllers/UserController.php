@@ -167,6 +167,7 @@ class UserController extends Controller
             'learner.stimuli',
             'responsibles',
             'committee',
+            'infringementType',
         )->get();
         foreach ($committeeSessions as $committeeSession) {
             foreach($committeeSession->responsibles as $responsible){
