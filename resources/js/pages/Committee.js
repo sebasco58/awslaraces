@@ -568,18 +568,18 @@ class Committee extends Component {
                                             Agregar caso
                                         </a>
                                     </div>
-                                </div>
-                                <div className="row mt-3">
                                     <div className="col text-right">
                                         <button onClick={this.exportCommittee} type="button" className="btn btn-link"><i className="far fa-file-word"></i> Exportar</button>
                                     </div>
+                                </div>
+                                <div className="row mt-3">
                                 </div>
                                 <div className="row mt-3">
                                     <div className="col">
                                         <DataTable>
                                             <thead>
                                                 <tr>
-                                                    <th>Documento</th>
+                                                    <th className="hide">Documento</th>
                                                     <th>Aprendiz</th>
                                                     <th>Tipo de caso</th>
                                                     <th>Acciones</th>
@@ -589,7 +589,7 @@ class Committee extends Component {
                                                 {this.state.stimuli.map(
                                                     (stimulus, i) => (
                                                         <tr key={i}>
-                                                            <td>
+                                                            <td className="hide">
                                                                 {
                                                                     stimulus
                                                                         .learner
@@ -624,7 +624,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-primary"
                                                                         onClick={this.handleEditStimulus}
                                                                     >
-                                                                        Editar
+                                                                        <i  data-id={stimulus.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Editar</span>
                                                                     </button>
                                                                     <button
                                                                         data-id={
@@ -633,7 +634,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-primary"
                                                                         onClick={this.handleModalStimuli}
                                                                     >
-                                                                        Detalle
+                                                                        <i data-id={stimulus.id} className="far fa-eye d-sm-block d-md-none"></i>
+                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Detalle</span>
                                                                     </button>
                                                                     <button
                                                                         data-id={
@@ -642,7 +644,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-danger"
                                                                         onClick={this.handleDeleteStimulus}
                                                                     >
-                                                                        Eliminar
+                                                                        <i data-id={stimulus.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Eliminar</span>
                                                                     </button>
                                                                 </div>
                                                             </td>
@@ -652,7 +655,7 @@ class Committee extends Component {
                                                 {this.state.learnerNovelties.map(
                                                     (learnerNovelty, i) => (
                                                         <tr key={i}>
-                                                            <td>
+                                                            <td className="hide">
                                                                 {
                                                                     learnerNovelty
                                                                         .learner
@@ -689,7 +692,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-primary"
                                                                         onClick={this.handleEditLearnerNovelty}
                                                                     >
-                                                                        Editar
+                                                                        <i  data-id={learnerNovelty.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                        <span data-id={learnerNovelty.id} className="d-none d-md-inline">Editar</span>
                                                                     </button>
                                                                     <button
                                                                         data-id={
@@ -698,7 +702,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-primary"
                                                                         onClick={this.handleModalNovelty}
                                                                     >
-                                                                        Detalle
+                                                                        <i data-id={learnerNovelty.id} className="far fa-eye d-sm-block d-md-none"></i>
+                                                                        <span data-id={learnerNovelty.id} className="d-none d-md-inline">Detalle</span>
                                                                     </button>
                                                                     <button
                                                                         data-id={
@@ -707,7 +712,8 @@ class Committee extends Component {
                                                                         className="btn btn-sm btn-outline-danger"
                                                                         onClick={this.handleDeleteLearnerNovelty}
                                                                     >
-                                                                        Eliminar
+                                                                        <i data-id={learnerNovelty.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                        <span data-id={learnerNovelty.id} className="d-none d-md-inline">Eliminar</span>
                                                                     </button>
                                                                 </div>
                                                             </td>
@@ -716,7 +722,7 @@ class Committee extends Component {
                                                 )}
                                                 {this.state.committee.committee_sessions.map((committee_session, i) => (
                                                     <tr key={i}>
-                                                        <td>{committee_session.learner.document_type} {committee_session.learner.document}</td>
+                                                        <td className="hide">{committee_session.learner.document_type} {committee_session.learner.document}</td>
                                                         <td>{committee_session.learner.name}</td>
                                                         <td><span className="badge badge-primary">Academico disciplinarios</span></td>
                                                         <td>
@@ -732,13 +738,15 @@ class Committee extends Component {
                                                                     className="btn btn-sm btn-outline-primary"
                                                                     onClick={this.handleEditAcademic}
                                                                 >
-                                                                    Editar
+                                                                    <i  data-id={committee_session.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Editar</span>
                                                                     </button>
                                                                 <Link
                                                                     className="btn btn-sm btn-outline-primary"
                                                                     to={`/app/committees/${this.state.id}/committee-session/${committee_session.id}`}
                                                                 >
-                                                                    Detalle
+                                                                    <i className="far fa-eye d-sm-block d-md-none"></i>
+                                                                    <span className="d-none d-md-inline">Detalle</span>
                                                                 </Link>
                                                                 <button
                                                                     data-id={
@@ -747,7 +755,8 @@ class Committee extends Component {
                                                                     className="btn btn-sm btn-outline-primary"
                                                                     onClick={this.handleParameters}
                                                                 >
-                                                                    Parametros
+                                                                    <i  data-id={committee_session.id} className="far fa-clipboard d-sm-block d-md-none"></i>
+                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Parametros</span>
                                                                     </button>
                                                                 <button
                                                                     data-id={
@@ -756,7 +765,8 @@ class Committee extends Component {
                                                                     className="btn btn-sm btn-outline-danger"
                                                                     onClick={this.handleDeleteAcademic}
                                                                 >
-                                                                    Eliminar
+                                                                    <i data-id={committee_session.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Eliminar</span>
                                                                     </button>
                                                             </div>
                                                         </td>
@@ -959,7 +969,7 @@ class Committee extends Component {
                             </div>
                             <div className="modal-body">
                                 <div className="row">
-                                    <div className="col-3">
+                                    <div className="col-sm-6 col-md-6 col-lg-3">
                                         <img id="learner_photo" src="/img/no-photo.png" alt="learner-img" className="img-thumbnail img-fluid" />
                                     </div>
                                     <div className="col">

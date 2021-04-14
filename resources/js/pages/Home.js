@@ -41,7 +41,7 @@ class Home extends Component {
         // console.log(f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate());
         // this.setState({ dateToday: f.getFullYear() + "-" + (f.getMonth() +1) + "-" + f.getDate() });
 
-        $('#tableFormative').DataTable({
+        $('#tableFormativehome').DataTable({
             language:{
                 url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
             },
@@ -113,71 +113,70 @@ class Home extends Component {
                 <hr/>
                 <div className="row my-4">
                     <div className="col-12">
-                        <table className="display table table-hover table-sm" id="tableFormative">
+                        <table className="display table table-hover table-sm" id="tableFormativehome">
                             <thead>
                                 <tr>
-                                    <th className="hide">Fecha comité</th>
+                                    <th>Fecha comité</th>
                                     <th>Aprendiz</th>
-                                    <th>Medida formativa</th>
+                                    <th className="hide">Medida formativa</th>
                                     <th className="hide">Responsable</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.allFormativeMeasures.length > 0 ? (
-                                    this.state.allFormativeMeasures.map(allFormativeMeasure =>(
-                                        <tr key={allFormativeMeasure.id}>
-                                            <td>
-                                                <Link to={"/app/committees/" + allFormativeMeasure.committee.id}>
-                                                            {allFormativeMeasure.committee.date}
-                                                </Link>
-                                            </td>
-                                            <td>{allFormativeMeasure.learner.name}</td>
-                                            <td>{allFormativeMeasure.responsibles ? (
-                                                    allFormativeMeasure.responsibles.length <= 1 ? (
-                                                        allFormativeMeasure.responsibles.map(responsible => (
-                                                            `${responsible.username}`
-                                                        ))
-                                                    ) : (
-                                                            <p>
-                                                                {allFormativeMeasure.responsibles[0].username}
-                                                                <button
-                                                                type="button"
-                                                                onMouseOver={this.tooltip}
-                                                                className="btn btn-link btn-sm"
-                                                                data-toggle="tooltip"
-                                                                data-placement="right"
-                                                                title="Hay mas de una medida formativa"
-                                                                >
-                                                                    <i className="fa fa-info-circle text-info" aria-hidden="true"></i>
-                                                                </button>
-                                                            </p>
-                                                        )      
-                                                ) : (
-                                                    'No hay medida'
-                                                )}
-                                                </td>
-                                                <td className="hide">{allFormativeMeasure.responsibles ? (
-                                                        allFormativeMeasure.responsibles.length <= 1 ? (
-                                                            allFormativeMeasure.responsibles.map(responsible => (
-                                                                `${responsible.username}`
-                                                            ))
-                                                    ) : (
-                                                            <>
-                                                            <p>
-                                                                {allFormativeMeasure.responsibles[0].username}
-                                                            </p>
-                                                            </>
-                                                        )
-                                                ) : (
-                                                    'No hay Resposables'
-                                                )}
-                                                </td>
-                                        </tr>
-                                        )
-                                    )
-                                ) : (
+                                this.state.allFormativeMeasures.map(allFormativeMeasure => (
+                                    <tr key={allFormativeMeasure.id}>
+                                        <td>
+                                            <Link to={"/app/committees/" + allFormativeMeasure.committee.id}>
+                                                        {allFormativeMeasure.committee.date}
+                                            </Link>
+                                        </td>
+                                        <td>{allFormativeMeasure.learner.name}</td>
+                                        <td className="hide">{allFormativeMeasure.responsibles ? (
+                                            allFormativeMeasure.responsibles.length <= 1 ? (
+                                                allFormativeMeasure.responsibles.map(responsible => (
+                                                    `${responsible.pivot.formative_measure.name}`
+                                                ))
+                                            ) : (
+                                                    <p>
+                                                        {allFormativeMeasure.responsibles[0].username}
+                                                        <button
+                                                        type="button"
+                                                        onMouseOver={this.tooltip}
+                                                        className="btn btn-link btn-sm"
+                                                        data-toggle="tooltip"
+                                                        data-placement="right"
+                                                        title="Hay mas de una medida formativa"
+                                                        >
+                                                            <i className="fa fa-info-circle text-info" aria-hidden="true"></i>
+                                                        </button>
+                                                    </p>
+                                                )      
+                                        ) : (
+                                            'No hay medida'
+                                        )}
+                                        </td>
+                                        <td className="hide">{allFormativeMeasure.responsibles ? (
+                                                allFormativeMeasure.responsibles.length <= 1 ? (
+                                                    allFormativeMeasure.responsibles.map(responsible => (
+                                                        `${responsible.username}`
+                                                    ))
+                                            ) : (
+                                                    <>
+                                                    <p>
+                                                        {allFormativeMeasure.responsibles[0].username}
+                                                    </p>
+                                                    </>
+                                                )
+                                        ) : (
+                                            'No hay Resposables'
+                                        )}
+                                        </td>
+                                    </tr>
+                                ))) : (
                                     <tr className="col">
                                         <td>No hay datos disponibles</td>
+                    
                                     </tr>
                                 )}
                             </tbody>

@@ -77,20 +77,20 @@ class LearnerNovelties extends Component {
                         <DataTable>
                             <thead>
                                 <tr>
-                                    <th>Documento</th>
+                                    <th className="hide">Documento</th>
                                     <th>Aprendiz</th>
                                     <th>Novedad</th>
-                                    <th>Fecha Comité</th>
+                                    <th className="hide">Fecha Comité</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.learnerNovelties.map(learnerNovelty => (
                                     <tr key={learnerNovelty.id}>
-                                        <td>{learnerNovelty.learner.document_type} {learnerNovelty.learner.document}</td>
+                                        <td className="hide">{learnerNovelty.learner.document_type} {learnerNovelty.learner.document}</td>
                                         <td>{learnerNovelty.learner.name}</td>
                                         <td>{learnerNovelty.novelty_type.name}</td>
-                                        <td>{learnerNovelty.committee.date}</td>
+                                        <td className="hide">{learnerNovelty.committee.date}</td>
                                         <td>
                                             <div className="btn-group" role="group" aria-label="Basic example">
                                                 <button data-id={learnerNovelty.id} onClick={this.handleDetail} className="btn btn-sm btn-outline-primary">Detalle</button>
@@ -114,7 +114,7 @@ class LearnerNovelties extends Component {
                             </div>
                             <div className="modal-body">
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-sm-6 col-md-6 col-lg-3">
                                         <div className="row">
                                             <div className="col mx-auto">
                                                 <div className="card">

@@ -361,7 +361,7 @@ class CommitteeSession extends Component {
         return (
             <>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-sm-6 col-md-6 col-lg-3">
                         <div className="card">
                             <img src={this.state.committeeSession.learner.photo ? "/storage/" + this.state.committeeSession.learner.photo : '/img/no-photo.png'} alt="img-fluid" className="card-img-top" />
                             <div className="card-body">
