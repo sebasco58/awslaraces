@@ -35,6 +35,7 @@ import { Link } from "react-router-dom";
 import { exportWord as exportWordCommittee } from '../containers/Acts/Committee';
 import { FindParameters, storeParameters } from '../containers/CommitteeParameters';
 import Ckeditor from '../components/Ckeditor';
+import VerifyPermissions from '../components/VerifyPermission';
 
 class Committee extends Component {
     constructor(props) {
@@ -560,16 +561,20 @@ class Committee extends Component {
                             >
                                 <div className="row mt-3">
                                     <div className="col">
-                                        <a href="#" onClick={this.handleModal}>
-                                            <i
-                                                className="fa fa-plus"
-                                                aria-hidden="true"
-                                            ></i>{" "}
-                                            Agregar caso
-                                        </a>
+                                        <VerifyPermissions permission="create_committee_session">
+                                            <a href="#" onClick={this.handleModal}>
+                                                <i
+                                                    className="fa fa-plus"
+                                                    aria-hidden="true"
+                                                ></i>{" "}
+                                                Agregar caso
+                                            </a>
+                                        </VerifyPermissions>
                                     </div>
                                     <div className="col text-right">
-                                        <button onClick={this.exportCommittee} type="button" className="btn btn-link"><i className="far fa-file-word"></i> Exportar</button>
+                                        <VerifyPermissions permission="create_committee_session">
+                                            <button onClick={this.exportCommittee} type="button" className="btn btn-link"><i className="far fa-file-word"></i> Exportar</button>
+                                        </VerifyPermissions>    
                                     </div>
                                 </div>
                                 <div className="row mt-3">
@@ -616,37 +621,43 @@ class Committee extends Component {
                                                                     className="btn-group"
                                                                     role="group"
                                                                     aria-label="Basic example"
-                                                                >
-                                                                    <button
-                                                                        data-id={
-                                                                            stimulus.id
-                                                                        }
-                                                                        className="btn btn-sm btn-outline-primary"
-                                                                        onClick={this.handleEditStimulus}
-                                                                    >
-                                                                        <i  data-id={stimulus.id} className="far fa-edit d-sm-block d-md-none"></i>
-                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Editar</span>
-                                                                    </button>
-                                                                    <button
-                                                                        data-id={
-                                                                            stimulus.id
-                                                                        }
-                                                                        className="btn btn-sm btn-outline-primary"
-                                                                        onClick={this.handleModalStimuli}
-                                                                    >
-                                                                        <i data-id={stimulus.id} className="far fa-eye d-sm-block d-md-none"></i>
-                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Detalle</span>
-                                                                    </button>
-                                                                    <button
-                                                                        data-id={
-                                                                            stimulus.id
-                                                                        }
-                                                                        className="btn btn-sm btn-outline-danger"
-                                                                        onClick={this.handleDeleteStimulus}
-                                                                    >
-                                                                        <i data-id={stimulus.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
-                                                                        <span data-id={stimulus.id} className="d-none d-md-inline">Eliminar</span>
-                                                                    </button>
+                                                                >on
+                                                                    <VerifyPermissions permission="edit_committee_session">
+                                                                        <button
+                                                                            data-id={
+                                                                                stimulus.id
+                                                                            }
+                                                                            className="btn btn-sm btn-outline-primary"
+                                                                            onClick={this.handleEditStimulus}
+                                                                        >
+                                                                            <i  data-id={stimulus.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                            <span data-id={stimulus.id} className="d-none d-md-inline">Editar</span>
+                                                                        </button>
+                                                                    </VerifyPermissions>
+                                                                    <VerifyPermissions permission="list_committee_session">
+                                                                        <button
+                                                                            data-id={
+                                                                                stimulus.id
+                                                                            }
+                                                                            className="btn btn-sm btn-outline-primary"
+                                                                            onClick={this.handleModalStimuli}
+                                                                        >
+                                                                            <i data-id={stimulus.id} className="far fa-eye d-sm-block d-md-none"></i>
+                                                                            <span data-id={stimulus.id} className="d-none d-md-inline">Detalle</span>
+                                                                        </button>
+                                                                    </VerifyPermissions>
+                                                                    <VerifyPermissions permission="delete_committee_session">
+                                                                        <button
+                                                                            data-id={
+                                                                                stimulus.id
+                                                                            }
+                                                                            className="btn btn-sm btn-outline-danger"
+                                                                            onClick={this.handleDeleteStimulus}
+                                                                        >
+                                                                            <i data-id={stimulus.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                            <span data-id={stimulus.id} className="d-none d-md-inline">Eliminar</span>
+                                                                        </button>
+                                                                    </VerifyPermissions>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -685,16 +696,19 @@ class Committee extends Component {
                                                                     role="group"
                                                                     aria-label="Basic example"
                                                                 >
-                                                                    <button
-                                                                        data-id={
-                                                                            learnerNovelty.id
-                                                                        }
-                                                                        className="btn btn-sm btn-outline-primary"
-                                                                        onClick={this.handleEditLearnerNovelty}
-                                                                    >
-                                                                        <i  data-id={learnerNovelty.id} className="far fa-edit d-sm-block d-md-none"></i>
-                                                                        <span data-id={learnerNovelty.id} className="d-none d-md-inline">Editar</span>
-                                                                    </button>
+                                                                    <VerifyPermissions permission="edit_committee_session">
+                                                                        <button
+                                                                            data-id={
+                                                                                learnerNovelty.id
+                                                                            }
+                                                                            className="btn btn-sm btn-outline-primary"
+                                                                            onClick={this.handleEditLearnerNovelty}
+                                                                        >
+                                                                            <i  data-id={learnerNovelty.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                            <span data-id={learnerNovelty.id} className="d-none d-md-inline">Editar</span>
+                                                                        </button>
+                                                                    </VerifyPermissions>
+                                                                    <VerifyPermissions permission="list_committee_session">
                                                                     <button
                                                                         data-id={
                                                                             learnerNovelty.id
@@ -705,16 +719,19 @@ class Committee extends Component {
                                                                         <i data-id={learnerNovelty.id} className="far fa-eye d-sm-block d-md-none"></i>
                                                                         <span data-id={learnerNovelty.id} className="d-none d-md-inline">Detalle</span>
                                                                     </button>
-                                                                    <button
-                                                                        data-id={
-                                                                            learnerNovelty.id
-                                                                        }
-                                                                        className="btn btn-sm btn-outline-danger"
-                                                                        onClick={this.handleDeleteLearnerNovelty}
-                                                                    >
-                                                                        <i data-id={learnerNovelty.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
-                                                                        <span data-id={learnerNovelty.id} className="d-none d-md-inline">Eliminar</span>
-                                                                    </button>
+                                                                    </VerifyPermissions>
+                                                                    <VerifyPermissions permission="delete_committee_session">
+                                                                        <button
+                                                                            data-id={
+                                                                                learnerNovelty.id
+                                                                            }
+                                                                            className="btn btn-sm btn-outline-danger"
+                                                                            onClick={this.handleDeleteLearnerNovelty}
+                                                                        >
+                                                                            <i data-id={learnerNovelty.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                            <span data-id={learnerNovelty.id} className="d-none d-md-inline">Eliminar</span>
+                                                                        </button>
+                                                                    </VerifyPermissions>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -731,43 +748,51 @@ class Committee extends Component {
                                                                 role="group"
                                                                 aria-label="Basic example"
                                                             >
-                                                                <button
-                                                                    data-id={
-                                                                        committee_session.id
-                                                                    }
-                                                                    className="btn btn-sm btn-outline-primary"
-                                                                    onClick={this.handleEditAcademic}
-                                                                >
-                                                                    <i  data-id={committee_session.id} className="far fa-edit d-sm-block d-md-none"></i>
-                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Editar</span>
-                                                                    </button>
-                                                                <Link
-                                                                    className="btn btn-sm btn-outline-primary"
-                                                                    to={`/app/committees/${this.state.id}/committee-session/${committee_session.id}`}
-                                                                >
-                                                                    <i className="far fa-eye d-sm-block d-md-none"></i>
-                                                                    <span className="d-none d-md-inline">Detalle</span>
-                                                                </Link>
-                                                                <button
-                                                                    data-id={
-                                                                        committee_session.id
-                                                                    }
-                                                                    className="btn btn-sm btn-outline-primary"
-                                                                    onClick={this.handleParameters}
-                                                                >
-                                                                    <i  data-id={committee_session.id} className="far fa-clipboard d-sm-block d-md-none"></i>
-                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Parametros</span>
-                                                                    </button>
-                                                                <button
-                                                                    data-id={
-                                                                        committee_session.id
-                                                                    }
-                                                                    className="btn btn-sm btn-outline-danger"
-                                                                    onClick={this.handleDeleteAcademic}
-                                                                >
-                                                                    <i data-id={committee_session.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
-                                                                    <span data-id={committee_session.id} className="d-none d-md-inline">Eliminar</span>
-                                                                    </button>
+                                                                <VerifyPermissions permission="edit_committee_session">
+                                                                    <button
+                                                                        data-id={
+                                                                            committee_session.id
+                                                                        }
+                                                                        className="btn btn-sm btn-outline-primary"
+                                                                        onClick={this.handleEditAcademic}
+                                                                    >
+                                                                        <i  data-id={committee_session.id} className="far fa-edit d-sm-block d-md-none"></i>
+                                                                        <span data-id={committee_session.id} className="d-none d-md-inline">Editar</span>
+                                                                        </button>
+                                                                </VerifyPermissions>
+                                                                <VerifyPermissions permission="edit_committee_session">
+                                                                    <Link
+                                                                        className="btn btn-sm btn-outline-primary"
+                                                                        to={`/app/committees/${this.state.id}/committee-session/${committee_session.id}`}
+                                                                    >
+                                                                        <i className="far fa-eye d-sm-block d-md-none"></i>
+                                                                        <span className="d-none d-md-inline">Detalle</span>
+                                                                    </Link>
+                                                                </VerifyPermissions>
+                                                                <VerifyPermissions permission="delete_committee_session">
+                                                                    <button
+                                                                        data-id={
+                                                                            committee_session.id
+                                                                        }
+                                                                        className="btn btn-sm btn-outline-primary"
+                                                                        onClick={this.handleParameters}
+                                                                    >
+                                                                        <i  data-id={committee_session.id} className="far fa-clipboard d-sm-block d-md-none"></i>
+                                                                        <span data-id={committee_session.id} className="d-none d-md-inline">Parametros</span>
+                                                                        </button>
+                                                                </VerifyPermissions>
+                                                                <VerifyPermissions permission="delete_committee_session">
+                                                                    <button
+                                                                        data-id={
+                                                                            committee_session.id
+                                                                        }
+                                                                        className="btn btn-sm btn-outline-danger"
+                                                                        onClick={this.handleDeleteAcademic}
+                                                                    >
+                                                                        <i data-id={committee_session.id} className="far fa-trash-alt d-sm-block d-md-none"></i>
+                                                                        <span data-id={committee_session.id} className="d-none d-md-inline">Eliminar</span>
+                                                                        </button>
+                                                                </VerifyPermissions>
                                                             </div>
                                                         </td>
                                                     </tr>

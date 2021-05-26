@@ -163,7 +163,7 @@ class Committees extends Component {
     }
     render() {
         const { rules } = this.state;
-        if (!this.state.committes || !this.state.subdirector || !this.state.coordinador || !this.state.formation_center || !this.state.place) {
+        if (!this.state.committes || !this.state.formation_center || !this.state.place) {
             return <Loader />;
         }
         return (
@@ -470,7 +470,7 @@ class Committees extends Component {
                                                                 *
                                                             </span>
                                                         </label>
-                                                        <input type="text" name="subdirector_name" id="subdirector_name" className="form-control" defaultValue={this.state.subdirector.name} />
+                                                        <input type="text" name="subdirector_name" id="subdirector_name" className="form-control" defaultValue="Subdirector User" />
                                                         <div className="invalid-feedback">
                                                             {rules.subdirector_name
                                                                 .isInvalid &&
@@ -488,7 +488,7 @@ class Committees extends Component {
                                                                 *
                                                             </span>
                                                         </label>
-                                                        <input type="text" name="coordinador_name" id="coordinador_name" className="form-control" defaultValue={this.state.coordinador.name} />
+                                                        <input type="text" name="coordinador_name" id="coordinador_name" className="form-control" defaultValue="Cordinador User" />
                                                         <div className="invalid-feedback">
                                                             {rules.coordinador_name
                                                                 .isInvalid &&

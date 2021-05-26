@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'paginaenerosamuel@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'jacobmachupicchu@gmail.com'),
         'name' => env('MAIL_FROM_NAME', 'Comite de Evaluacion CPIC'),
     ],
 
